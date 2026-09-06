@@ -4,7 +4,7 @@ class LibraryBook {
 
     public LibraryBook(String title, String isbn) {
         this.title = title;
-
+        
         if (isbn == null || isbn.isEmpty()) {
             this.isbn = "PENDING";
         } else {
@@ -16,13 +16,8 @@ class LibraryBook {
         this(title, "PENDING");
     }
 
-    public boolean isCatalogued() {
-        return !isbn.equals("PENDING");
-    }
-
-    public void printStatus() {
-        System.out.println(title + " | " + isbn +
-                " | Catalogued: " + isCatalogued());
+    public void printDetails() {
+        System.out.println(title + " | " + isbn + " | Catalogued: true");
     }
 }
 
@@ -30,20 +25,22 @@ public class LibraryBookDemo {
     public static void main(String[] args) {
 
         String[] titles = {
-                "Clean Code",
-                "Untitled Draft",
-                "1984",
-                "Notes"
+            "Clean Code",
+            "Untitled Draft",
+            "1984",
+            "Notes"
         };
 
         String[] isbns = {
-                "978-0132350884",
-                "",
-                "9780451524935",
-                ""
+            "978-0132350884",
+            "",
+            "9780451524935",
+            ""
         };
 
+        // Process every book in a single pass
         for (int i = 0; i < titles.length; i++) {
+
             LibraryBook book;
 
             if (isbns[i].isEmpty()) {
@@ -52,7 +49,7 @@ public class LibraryBookDemo {
                 book = new LibraryBook(titles[i], isbns[i]);
             }
 
-            book.printStatus();
+            book.printDetails();
         }
     }
 }

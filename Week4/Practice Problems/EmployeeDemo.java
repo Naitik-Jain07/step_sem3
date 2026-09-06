@@ -1,18 +1,18 @@
 class Employee {
-    String employeeId;
+    String empId;
     double salary;
 
-    public Employee(String employeeId, double salary) {
-        this.employeeId = employeeId;
+    public Employee(String empId, double salary) {
+        this.empId = empId;
         this.salary = salary;
     }
 
     public void raiseSalary(double salary) {
-        this.salary += salary;
+        this.salary = this.salary + salary;
     }
 
-    public void printSalary() {
-        System.out.println(employeeId + " | Final Salary: Rs " + salary);
+    public void printDetails() {
+        System.out.println(empId + " | Final Salary: Rs " + salary);
     }
 }
 
@@ -20,18 +20,16 @@ public class EmployeeDemo {
     public static void main(String[] args) {
 
         Employee[] employees = {
-                new Employee("E-101", 40000),
-                new Employee("E-102", 55000),
-                new Employee("E-103", 62000),
-                new Employee("E-104", 48000)
+            new Employee("E-101", 40000),
+            new Employee("E-102", 55000),
+            new Employee("E-103", 62000),
+            new Employee("E-104", 48000)
         };
 
-        for (Employee employee : employees) {
-            employee.raiseSalary(5000);
-        }
-
-        for (Employee employee : employees) {
-            employee.printSalary();
+        // Apply same bonus to every employee in one pass
+        for (int i = 0; i < employees.length; i++) {
+            employees[i].raiseSalary(5000);
+            employees[i].printDetails();
         }
     }
 }
